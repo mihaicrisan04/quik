@@ -1,10 +1,10 @@
 # quik
 
-Inline AI prompt for zsh. `Cmd+Enter`, ask, streams in place.
+inline AI prompt for zsh. `Cmd+Enter`, ask, streams in place.
 
-For everyone who heard about Warp's AI bar and thought *"yeah, but I like my terminal."*
+sorry Warp, i like my terminal
 
-<!-- demo gif goes here -->
+<img width="1040" height="720" alt="quik_final" src="https://github.com/user-attachments/assets/349fa2dc-60c8-434b-9424-11f5332c58f0" />
 
 ## install
 
