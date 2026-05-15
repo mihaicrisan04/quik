@@ -2,6 +2,8 @@
 
 Inline AI prompt for zsh. `Cmd+Enter`, ask, streams in place.
 
+For everyone who heard about Warp's AI bar and thought *"yeah, but I like my terminal."*
+
 <!-- demo gif goes here -->
 
 ## install
