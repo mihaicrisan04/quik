@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rust:
+    name: rust / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: fmt
+        run: cargo fmt --all --check
+
+      - name: clippy
+        run: cargo clippy --locked --all-targets -- -D warnings
+
+      - name: build
+        run: cargo build --locked --release
+
+      - name: test
+        run: cargo test --locked
+
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck the plugin
+        run: |
+          # The plugin is zsh-only, but shellcheck still catches obvious gotchas.
+          # We don't fail CI on shellcheck since some zsh idioms confuse it.
+          shellcheck -s bash shell/quik.plugin.zsh || true

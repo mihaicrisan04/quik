@@ -1,0 +1,30 @@
+[tools]
+rust = "1.85"
+
+[tasks.build]
+description = "Build the release binary"
+run = "cargo build --release --locked"
+
+[tasks.dev]
+description = "Build the debug binary"
+run = "cargo build"
+
+[tasks.install]
+description = "Install the binary to ~/.cargo/bin"
+run = "cargo install --path . --locked"
+
+[tasks.test]
+description = "Run the test suite"
+run = "cargo test --locked"
+
+[tasks.fmt]
+description = "Format rust sources"
+run = "cargo fmt"
+
+[tasks.lint]
+description = "Format-check + clippy"
+run = ["cargo fmt --check", "cargo clippy --locked -- -D warnings"]
+
+[tasks.run]
+description = "Stream a one-shot prompt locally for dev testing"
+run = "cargo run --release -- stream --backend claude"

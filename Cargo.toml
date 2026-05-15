@@ -1,0 +1,29 @@
+[package]
+name = "quik"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+license = "MIT"
+description = "Inline AI prompt for your terminal. Cmd+Enter, ask anything, get a streamed answer in place."
+homepage = "https://github.com/mihaicrisan04/quik"
+repository = "https://github.com/mihaicrisan04/quik"
+authors = ["Mihai Crisan <crisanmihai2004@gmail.com>"]
+readme = "README.md"
+categories = ["command-line-utilities"]
+keywords = ["zsh", "ai", "claude", "codex", "terminal"]
+
+[[bin]]
+name = "quik"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+nix = { version = "0.29", features = ["signal"] }
+
+[profile.release]
+lto = "thin"
+strip = "symbols"
+codegen-units = 1
