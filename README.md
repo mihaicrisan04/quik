@@ -1,6 +1,6 @@
 # quik
 
-inline AI prompt for zsh. `Cmd+Enter`, ask, streams in place.
+inline AI prompt for zsh. `Cmd+Enter`, ask, streams in place, fast.
 
 sorry Warp, i like my terminal
 
